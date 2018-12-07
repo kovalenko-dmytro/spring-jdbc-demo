@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Users</title>
+</head>
+
+<body>
+<!-- Page Content -->
+<div layout:fragment="content" th:remove="tag">
+    <div class="row">
+        <div class="col-sm-6 mx-auto mt-3 text-center">
+            <h1>User Service</h1>
+            <div>
+                <a th:href="@{'/users'}" class="btn btn-info text-center">Go to the users list</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>User</title>
+</head>
+
+<body>
+<!-- Page Content -->
+<div layout:fragment="content" th:remove="tag">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="text-center">User <span th:if="${user} != null" th:text="${user.name}"></span></h2>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body justify-content-center">
+                    <div th:if="${user} != null">
+                        <p><span class="font-weight-bold">Name:   </span><span th:text="${user.name}"></span></p>
+                        <p><span class="font-weight-bold">Age:   </span><span th:text="${user.age}"></span></p>
+                    </div>
+                </div>
+                <a class="btn btn-sm btn-warning btn-block mx-auto" th:href="@{'/users/' + ${user.id} + '/update'}">Update</a>
+                <div class="text-primary mt-2 text-center">
+                    <a th:href="@{'/users'}">Back to users list</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

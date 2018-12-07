@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Users</title>
+</head>
+
+<body>
+<!-- Page Content -->
+<div layout:fragment="content" th:remove="tag">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="text-center">Users list</h2>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body justify-content-center">
+                    <div class="alert alert-warning" role="alert" th:if="${#lists.isEmpty(users)}">
+                        <p class="text-center">No users available</p>
+                    </div>
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(users)}">
+                        <table class="table table-striped table-bordered table-hover" >
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th colspan="2"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="user: ${users}">
+                                <td th:text="${user.name}"></td>
+                                <td><a class="btn btn-sm btn-primary btn-block" th:href="@{'/users/' + ${user.id}}">View</a></td>
+                                <td>
+                                    <form method="post" th:action="@{'/users/' + ${user.id}}">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input class="btn btn-sm btn-danger btn-block" type="submit" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a class="btn btn-sm btn-success btn-block" th:href="@{'/users/create'}">Add user</a>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
